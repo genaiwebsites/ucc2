@@ -19,7 +19,7 @@ export const LogisticsHubs: React.FC = () => {
           </p>
         </div>
 
-        {/* 2x2 Hub Grid */}
+        {/* 2x2 Hub Grid - Clean, no artificial numbering */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {LOGISTICS_HUBS.map((hub) => (
             <div
@@ -27,13 +27,10 @@ export const LogisticsHubs: React.FC = () => {
               className="bg-white rounded-DEFAULT p-7 sm:p-8 shadow-card border border-slate-200/85 transition-all duration-300 hover:shadow-cardHi hover:-translate-y-1 flex flex-col justify-between group"
             >
               <div>
-                {/* Top Badge & Index */}
+                {/* Top Badge */}
                 <div className="flex items-center justify-between gap-3 mb-4">
                   <span className="font-heading text-[11.5px] font-bold tracking-wider uppercase text-blue-800 bg-blue-50 border border-blue-200 px-3.5 py-1 rounded-full">
                     {hub.capacityBadge}
-                  </span>
-                  <span className="font-heading text-[13px] font-bold text-slate-400">
-                    {hub.idx}
                   </span>
                 </div>
 

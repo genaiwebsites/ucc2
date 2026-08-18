@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
                   onClick={(e) => handleNavClick(e, '#mission')}
                   className="text-[0.88rem] text-white/85 hover:text-white transition-colors"
                 >
-                  Quality SLA Protocols
+                  Quality Standards
                 </a>
               </li>
               <li>

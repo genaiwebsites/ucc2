@@ -11,23 +11,38 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
   const [isStuck, setIsStuck] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('heritage');
+
+  // Exact chronological page order matching page.tsx sections
+  const navLinks = [
+    { label: 'About', href: '#heritage', id: 'heritage' },
+    { label: 'Products', href: '#products', id: 'products' },
+    { label: 'Clients', href: '#associates', id: 'associates' },
+    { label: 'Quality', href: '#mission', id: 'mission' },
+    { label: 'Logistics', href: '#geography', id: 'geography' },
+    { label: 'FAQ', href: '#faq', id: 'faq' },
+    { label: 'Contact Desk', href: '#contact', id: 'contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsStuck(window.scrollY > 24);
+
+      // Simple active section detection
+      const scrollPos = window.scrollY + 120;
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const el = document.getElementById(navLinks[i].id);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(navLinks[i].id);
+          break;
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinks = [
-    { label: 'Heritage', href: '#heritage' },
-    { label: 'Products', href: '#products' },
-    { label: 'Principals', href: '#associates' },
-    { label: 'Logistics', href: '#geography' },
-    { label: 'Quality SLA', href: '#mission' },
-    { label: 'Procurement', href: '#contact' },
-  ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsMobileOpen(false);
@@ -49,11 +64,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
     >
       <div className="wrap">
         <div
-          className={`bg-white/92 backdrop-blur-xl border border-slate-200 rounded-full px-3 py-2 sm:pl-5 flex items-center justify-between gap-4 sm:gap-5 transition-shadow duration-300 ${
+          className={`bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-full px-3 py-1.5 sm:pl-5 flex items-center justify-between gap-3 sm:gap-4 transition-shadow duration-300 ${
             isStuck ? 'shadow-navStuck' : 'shadow-nav'
           }`}
         >
-          {/* Brand */}
+          {/* Brand Logo */}
           <a
             href="#top"
             onClick={(e) => handleLinkClick(e, '#top')}
@@ -62,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
             <div className="w-8 h-8 rounded-[9px] bg-[#0B1240] text-white grid place-items-center font-heading font-extrabold text-[13px] tracking-tight transition-transform duration-300 group-hover:scale-105 shadow-xs">
               {COMPANY.shortName}
             </div>
-            <div className="font-heading font-bold text-[15px] text-ink tracking-tight leading-tight">
+            <div className="font-heading font-bold text-[14.5px] text-ink tracking-tight leading-tight hidden sm:block">
               {COMPANY.name.split(' ')[0]} Commercial
               <small className="block text-[9px] font-bold text-slate-500 tracking-wider mt-[1px]">
                 EST. {COMPANY.established} · KOLKATA
@@ -70,21 +85,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
             </div>
           </a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1" id="navLinks">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="font-heading text-[13.5px] font-semibold text-slate-700 px-3.5 py-1.5 rounded-full transition-all duration-200 hover:text-brand-blue hover:bg-blue-50"
-              >
-                {link.label}
-              </a>
-            ))}
+          {/* Desktop Nav Links - Chronological Order */}
+          <nav className="hidden lg:flex items-center gap-0.5" id="navLinks">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className={`font-heading text-[13px] font-semibold px-3 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap ${
+                    isActive
+                      ? 'text-brand-blue bg-blue-50/90 font-bold shadow-xs'
+                      : 'text-slate-700 hover:text-brand-blue hover:bg-slate-50'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
 
-          {/* Right Action */}
+          {/* Right CTA Action */}
           <div className="flex items-center gap-2 flex-none">
             <a
               href="#contact"
@@ -96,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
                   handleLinkClick(e, '#contact');
                 }
               }}
-              className="cbtn cbtn-blue !text-[13px] !py-1 !pl-4 !pr-1 shadow-sm"
+              className="cbtn cbtn-blue !text-[13px] !py-1 !pl-3.5 !pr-1 shadow-sm"
             >
               Lot RFQ
               <span className="disc !w-7 !h-7">
@@ -108,7 +130,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
             <button
               type="button"
               onClick={() => setIsMobileOpen((prev) => !prev)}
-              className="lg:hidden w-[38px] h-[38px] rounded-full bg-[#0B1240] text-white grid place-items-center transition-transform active:scale-95 cursor-pointer shadow-sm"
+              className="lg:hidden w-[36px] h-[36px] rounded-full bg-[#0B1240] text-white grid place-items-center transition-transform active:scale-95 cursor-pointer shadow-sm"
               aria-label="Toggle menu"
               aria-expanded={isMobileOpen}
             >
@@ -123,15 +145,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRfq }) => {
 
         {/* Mobile Dropdown Drawer */}
         {isMobileOpen && (
-          <div className="lg:hidden fixed top-[76px] left-4 right-4 bg-white border border-slate-200 rounded-[22px] p-3.5 flex flex-col gap-1 shadow-[0_18px_48px_rgba(15,28,74,0.18)] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="lg:hidden fixed top-[70px] left-4 right-4 bg-white border border-slate-200 rounded-[22px] p-3.5 flex flex-col gap-1 shadow-[0_18px_48px_rgba(15,28,74,0.18)] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="font-heading text-[14.5px] font-bold text-ink px-4 py-2.5 rounded-xl hover:bg-slate-50 transition-colors"
+                className="font-heading text-[14px] font-bold text-ink px-4 py-2.5 rounded-xl hover:bg-slate-50 hover:text-brand-blue transition-colors flex items-center justify-between"
               >
-                {link.label}
+                <span>{link.label}</span>
+                <span className="text-xs text-slate-400 font-normal">#{link.id}</span>
               </a>
             ))}
             <div className="pt-2 mt-1 border-t border-slate-200">

@@ -1,13 +1,63 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'motion/react';
 import {
   Flask,
   Anchor,
   Buildings,
-  Sparkle,
 } from '@phosphor-icons/react';
 import { COMPANY } from '@/data/company';
+
+interface CounterProps {
+  value: number;
+  suffix?: string;
+  from?: number;
+  duration?: number;
+}
+
+const AnimatedNumber: React.FC<CounterProps> = ({
+  value,
+  suffix = '',
+  from = 0,
+  duration = 1.8,
+}) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
+  const [displayValue, setDisplayValue] = useState(from);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTimestamp: number | null = null;
+    const totalDuration = duration * 1000;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / totalDuration, 1);
+      // smooth ease-out curve
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.floor(from + (value - from) * ease);
+      setDisplayValue(current);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        setDisplayValue(value);
+      }
+    };
+
+    const animId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animId);
+  }, [isInView, value, from, duration]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {displayValue}
+      {suffix}
+    </span>
+  );
+};
 
 export const Heritage: React.FC = () => {
   const sisterCompanies = [
@@ -42,12 +92,8 @@ export const Heritage: React.FC = () => {
       <div className="wrap space-y-6">
         {/* 1. Main Heritage Story Card */}
         <div className="bg-white rounded-DEFAULT p-8 sm:p-10 lg:p-12 shadow-card border border-slate-200/85">
-          {/* Header Badges */}
           <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 font-heading text-[11.5px] font-bold uppercase tracking-wider">
-              <Sparkle weight="fill" className="w-3.5 h-3.5 text-brand-blue" />
-              Corporate Heritage · Est. 1969
-            </div>
+            <div className="eyebrow !mb-0">Corporate Heritage · Est. 1969</div>
             <div className="text-xs font-heading font-semibold text-slate-500 bg-slate-100 px-3.5 py-1 rounded-full border border-slate-200">
               Mission: <span className="text-ink font-bold">&ldquo;{COMPANY.missionStatement}&rdquo;</span>
             </div>
@@ -66,20 +112,56 @@ export const Heritage: React.FC = () => {
               </p>
             </div>
 
-            <div className="lg:col-span-5 grid grid-cols-3 gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200/80 text-center">
-              <div className="p-2">
-                <div className="font-heading text-2xl sm:text-3xl font-bold text-brand-blue">1969</div>
-                <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Founded</div>
-              </div>
-              <div className="p-2 border-x border-slate-200">
-                <div className="font-heading text-2xl sm:text-3xl font-bold text-ink">55+</div>
-                <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Years Trust</div>
-              </div>
-              <div className="p-2">
-                <div className="font-heading text-2xl sm:text-3xl font-bold text-brand-blue">11+</div>
-                <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Principals</div>
-              </div>
-            </div>
+            {/* Animated 3-Metric Pill Box */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 grid grid-cols-3 gap-2 bg-slate-50/90 hover:bg-slate-50 p-4 rounded-2xl border border-slate-200/90 shadow-xs text-center transition-all duration-300"
+            >
+              {/* Stat 1: Founded */}
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                className="p-2.5 rounded-xl hover:bg-white transition-colors duration-200 cursor-default"
+              >
+                <div className="font-heading text-2xl sm:text-3xl font-bold text-brand-blue tracking-tight">
+                  <AnimatedNumber value={1969} from={1940} duration={1.6} />
+                </div>
+                <div className="text-[10.5px] font-heading font-bold text-slate-500 uppercase tracking-widest mt-1">
+                  Founded
+                </div>
+              </motion.div>
+
+              {/* Stat 2: Years Trust */}
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                className="p-2.5 rounded-xl hover:bg-white border-x border-slate-200/90 transition-colors duration-200 cursor-default"
+              >
+                <div className="font-heading text-2xl sm:text-3xl font-bold text-ink tracking-tight">
+                  <AnimatedNumber value={55} suffix="+" from={0} duration={1.6} />
+                </div>
+                <div className="text-[10.5px] font-heading font-bold text-slate-500 uppercase tracking-widest mt-1">
+                  Years Trust
+                </div>
+              </motion.div>
+
+              {/* Stat 3: Principals */}
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                className="p-2.5 rounded-xl hover:bg-white transition-colors duration-200 cursor-default"
+              >
+                <div className="font-heading text-2xl sm:text-3xl font-bold text-brand-blue tracking-tight">
+                  <AnimatedNumber value={11} suffix="+" from={0} duration={1.4} />
+                </div>
+                <div className="text-[10.5px] font-heading font-bold text-slate-500 uppercase tracking-widest mt-1">
+                  Principals
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
@@ -93,12 +175,16 @@ export const Heritage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {sisterCompanies.map((company) => {
+            {sisterCompanies.map((company, index) => {
               const Icon = company.icon;
               return (
-                <div
+                <motion.div
                   key={company.name}
-                  className="bg-white rounded-DEFAULT p-6 sm:p-7 shadow-card border border-slate-200/85 hover:border-blue-300 transition-all duration-300 hover:shadow-cardHi flex flex-col justify-between group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="bg-white rounded-DEFAULT p-6 sm:p-7 shadow-card border border-slate-200/85 hover:border-blue-300 transition-all duration-300 hover:shadow-cardHi hover:-translate-y-1 flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-4">
@@ -120,7 +206,7 @@ export const Heritage: React.FC = () => {
                       {company.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
