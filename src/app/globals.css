@@ -222,7 +222,7 @@ p {
 .hero-card {
   background: var(--ink);
   border-radius: 0 0 var(--r-bleed) var(--r-bleed);
-  padding: 158px 0 0;
+  padding: 78px 0 0;
   position: relative;
   overflow: hidden;
 }
