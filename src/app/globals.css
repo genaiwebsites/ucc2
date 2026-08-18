@@ -86,7 +86,13 @@ p {
 .wrap {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
+}
+
+@media (min-width: 640px) {
+  .wrap {
+    padding: 0 24px;
+  }
 }
 
 /* ══ EYEBROW ══ */
@@ -259,12 +265,30 @@ p {
 
 /* ══ SECTION SHELL ══ */
 .sec {
-  padding: 96px 0;
+  padding: 48px 0;
+}
+
+@media (min-width: 640px) {
+  .sec {
+    padding: 72px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sec {
+    padding: 88px 0;
+  }
 }
 
 .sec-head {
-  margin-bottom: 44px;
+  margin-bottom: 28px;
   max-width: 660px;
+}
+
+@media (min-width: 640px) {
+  .sec-head {
+    margin-bottom: 40px;
+  }
 }
 
 .sec-head.mid {
@@ -274,7 +298,7 @@ p {
 }
 
 .sec-head h2 {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .sec-head h2 em {
@@ -283,8 +307,8 @@ p {
 }
 
 .sec-head p {
-  font-size: 0.96rem;
-  line-height: 1.72;
+  font-size: 0.94rem;
+  line-height: 1.65;
 }
 
 /* ══ MARQUEE ══ */
@@ -299,9 +323,23 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 110px;
+  width: 32px;
   z-index: 2;
   pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .mq::before,
+  .mq::after {
+    width: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mq::before,
+  .mq::after {
+    width: 110px;
+  }
 }
 
 .mq::before {
