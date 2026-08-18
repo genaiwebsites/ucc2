@@ -35,7 +35,7 @@ export const FAQAccordion: React.FC = () => {
                 <div
                   key={faq.id}
                   className={`bg-white rounded-DEFAULT shadow-card border transition-all duration-300 ${
-                    isOpen ? 'border-blue-200 shadow-cardHi' : 'border-slate-200/85'
+                    isOpen ? 'border-blue-300 shadow-cardHi' : 'border-slate-200/85'
                   }`}
                 >
                   <button
@@ -48,8 +48,8 @@ export const FAQAccordion: React.FC = () => {
                     <span
                       className={`w-7 h-7 rounded-full flex items-center justify-center flex-none transition-all duration-350 ${
                         isOpen
-                          ? 'bg-brand-blue text-white rotate-45 shadow-sm'
-                          : 'bg-blue-50 text-brand-blue border border-blue-100'
+                          ? 'bg-[#1F55E8] text-white rotate-45 shadow-sm'
+                          : 'bg-[#EAF0FE] text-[#1F55E8] border border-[#BFDBFE]'
                       }`}
                     >
                       <Plus weight="bold" className="w-3.5 h-3.5" />

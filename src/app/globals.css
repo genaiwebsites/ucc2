@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #0B1240;
+  --color-navy: #141C55;
+  --color-navy-2: #1B2566;
+  --color-navy-hover: #222D75;
+  --color-brand-blue: #1F55E8;
+  --color-brand-hi: #2E6BFF;
+  --color-brand-soft: #EAF0FE;
+  --color-brand-light: #8FB0FF;
+  --color-page: #EDF1F9;
+  --color-page-2: #F5F8FC;
+  --color-card: #FFFFFF;
+  --color-line: #E2E8F4;
+  --color-text-muted: #5C6785;
+}
+
 :root {
   --ink: #0B1240;
   --navy: #141C55;
@@ -212,11 +228,11 @@ p {
 }
 
 .hero-card h1 {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .hero-card p {
-  color: var(--text-navy);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .hero-card::before {
