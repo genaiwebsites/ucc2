@@ -36,18 +36,19 @@ export const Footer: React.FC = () => {
               {COMPANY.name}
             </h5>
             <p className="text-white/80 text-[0.88rem] leading-relaxed mb-4 max-w-xs font-normal">
-              Eastern India&apos;s institutional importer, stockist, and indenting agent for synthetic polymers, natural rubber, carbon black, and rubber chemicals since 1969.
+              Established in 1969 by {COMPANY.founder}. Eastern India’s institutional indenters, importers, and stockists for synthetic polymers, natural rubber, and industrial chemicals.
             </p>
-            <address className="not-italic text-[0.85rem] text-white/70 leading-relaxed font-sans font-medium">
-              {COMPANY.address.street}
+            <address className="not-italic text-[0.83rem] text-white/70 leading-relaxed font-sans font-medium">
+              <strong className="text-white/90 font-heading block mb-0.5">{COMPANY.headquarters.building}</strong>
+              {COMPANY.headquarters.unit}, {COMPANY.headquarters.block}
               <br />
-              {COMPANY.address.city} {COMPANY.address.postalCode}, {COMPANY.address.country}
+              {COMPANY.headquarters.area}, {COMPANY.headquarters.city} – {COMPANY.headquarters.postalCode}
             </address>
           </div>
 
           {/* Chemical Portfolio */}
           <div>
-            <h6 className="font-heading text-[11px] font-bold tracking-wider uppercase text-white/65 mb-4">
+            <h6 className="font-heading text-[11px] font-bold tracking-wider uppercase text-[#8FB0FF] mb-4">
               Chemical Portfolio
             </h6>
             <ul className="space-y-2.5">
@@ -99,10 +100,10 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Operations */}
+          {/* Operations & Group */}
           <div>
-            <h6 className="font-heading text-[11px] font-bold tracking-wider uppercase text-white/65 mb-4">
-              Operations
+            <h6 className="font-heading text-[11px] font-bold tracking-wider uppercase text-[#8FB0FF] mb-4">
+              Group Operations
             </h6>
             <ul className="space-y-2.5">
               <li>
@@ -111,7 +112,7 @@ export const Footer: React.FC = () => {
                   onClick={(e) => handleNavClick(e, '#heritage')}
                   className="text-[0.88rem] text-white/85 hover:text-white transition-colors"
                 >
-                  About Heritage
+                  Corporate Heritage
                 </a>
               </li>
               <li>
@@ -138,7 +139,7 @@ export const Footer: React.FC = () => {
                   onClick={(e) => handleNavClick(e, '#mission')}
                   className="text-[0.88rem] text-white/85 hover:text-white transition-colors"
                 >
-                  Quality Assurance
+                  Quality SLA Protocols
                 </a>
               </li>
               <li>
@@ -155,7 +156,7 @@ export const Footer: React.FC = () => {
 
           {/* Commercial Desk Contacts */}
           <div>
-            <h6 className="font-heading text-[11px] font-bold tracking-wider uppercase text-white/65 mb-4">
+            <h6 className="font-heading text-[11px] font-bold tracking-wider uppercase text-[#8FB0FF] mb-4">
               Commercial Desk
             </h6>
             <div className="flex flex-col gap-3.5">
@@ -167,7 +168,7 @@ export const Footer: React.FC = () => {
                   {COMPANY.contacts.salesPhone}
                 </a>
                 <small className="block text-[11.5px] text-white/65 mt-0.5 font-sans font-medium">
-                  Sales &amp; Indenting
+                  Sales &amp; Indenting Desk
                 </small>
               </div>
 
@@ -179,7 +180,7 @@ export const Footer: React.FC = () => {
                   {COMPANY.contacts.technicalPhone}
                 </a>
                 <small className="block text-[11.5px] text-white/65 mt-0.5 font-sans font-medium">
-                  Technical Support
+                  Technical Advisory Desk
                 </small>
               </div>
 

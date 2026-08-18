@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { MapPin, PhoneCall, EnvelopeSimple, ArrowRight, CheckCircle } from '@phosphor-icons/react';
+import { MapPin, PhoneCall, EnvelopeSimple, ArrowRight, CheckCircle, Buildings } from '@phosphor-icons/react';
 import confetti from 'canvas-confetti';
 import { COMPANY } from '@/data/company';
 import { Product } from '@/data/products';
@@ -31,7 +31,7 @@ export const ProcurementDesk: React.FC<ProcurementDeskProps> = ({ selectedProduc
       setFormData((prev) => ({
         ...prev,
         productLine: `${selectedProduct.categoryLabel} — ${selectedProduct.title}`,
-        requirements: `Grade: ${selectedProduct.title}\nCAS: ${selectedProduct.casNumber}\nEstimated Tonnage: `,
+        requirements: `Grade: ${selectedProduct.title}\nCAS: ${selectedProduct.casNumber}\nEstimated Monthly Tonnage: `,
       }));
     }
   }, [selectedProduct]);
@@ -116,17 +116,17 @@ export const ProcurementDesk: React.FC<ProcurementDeskProps> = ({ selectedProduc
         </div>
 
         {/* 2-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-4 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-5 items-start">
           {/* Left Column (Dark Ink Card) */}
-          <div className="bg-[#0B1240] rounded-lg p-8 sm:p-11 relative overflow-hidden text-white h-full shadow-lg border border-[#1B2566]">
+          <div className="bg-[#0B1240] rounded-DEFAULT p-8 sm:p-10 relative overflow-hidden text-white h-full shadow-lg border border-[#1B2566]">
             <div className="absolute inset-0 bg-[radial-gradient(500px_320px_at_88%_96%,rgba(46,107,255,0.28),transparent_62%)] pointer-events-none" />
 
             <div className="relative z-10">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 !text-white">
-                Commercial trading desk
-              </h2>
-              <p className="text-white/85 text-[0.95rem] leading-relaxed mb-8 font-normal">
-                Speak to the people who move the material. Sales and indenting, or technical advisory on grade selection.
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 !text-white">
+                Commercial Trading Desk
+              </h3>
+              <p className="text-white/85 text-[0.93rem] leading-relaxed mb-6 font-normal">
+                Direct factory supply, international indents, and custom technical compounding advisory.
               </p>
 
               <div className="flex flex-col">
@@ -136,13 +136,15 @@ export const ProcurementDesk: React.FC<ProcurementDeskProps> = ({ selectedProduc
                     <MapPin weight="duotone" className="w-5 h-5 text-[#8FB0FF]" />
                   </div>
                   <div>
-                    <div className="font-heading text-[11px] font-bold tracking-wider uppercase text-white/70 mb-1">
-                      Headquarters
+                    <div className="font-heading text-[11px] font-bold tracking-wider uppercase text-[#8FB0FF] mb-1">
+                      {COMPANY.headquarters.title}
                     </div>
                     <div className="text-[0.92rem] text-white leading-snug font-medium">
-                      {COMPANY.address.street}
+                      {COMPANY.headquarters.building}, {COMPANY.headquarters.unit}
                       <br />
-                      {COMPANY.address.city} {COMPANY.address.postalCode}, {COMPANY.address.state}, {COMPANY.address.country}
+                      {COMPANY.headquarters.block}, {COMPANY.headquarters.area}
+                      <br />
+                      {COMPANY.headquarters.city} – {COMPANY.headquarters.postalCode}, {COMPANY.headquarters.state}
                     </div>
                   </div>
                 </div>
@@ -153,8 +155,8 @@ export const ProcurementDesk: React.FC<ProcurementDeskProps> = ({ selectedProduc
                     <PhoneCall weight="duotone" className="w-5 h-5 text-[#8FB0FF]" />
                   </div>
                   <div>
-                    <div className="font-heading text-[11px] font-bold tracking-wider uppercase text-white/70 mb-1">
-                      Commercial Phone
+                    <div className="font-heading text-[11px] font-bold tracking-wider uppercase text-[#8FB0FF] mb-1">
+                      Direct Commercial Phone
                     </div>
                     <div className="text-[0.92rem] text-white leading-snug font-semibold">
                       <a
@@ -163,7 +165,7 @@ export const ProcurementDesk: React.FC<ProcurementDeskProps> = ({ selectedProduc
                       >
                         {COMPANY.contacts.salesPhone}
                       </a>{' '}
-                      <span className="text-white/70 text-[12px] font-normal font-sans ml-1">· Sales &amp; Indents</span>
+                      <span className="text-white/70 text-[12px] font-normal font-sans ml-1">· Commercial &amp; Indenting</span>
                       <br />
                       <a
                         href={`tel:${COMPANY.contacts.technicalPhoneRaw}`}
@@ -171,18 +173,18 @@ export const ProcurementDesk: React.FC<ProcurementDeskProps> = ({ selectedProduc
                       >
                         {COMPANY.contacts.technicalPhone}
                       </a>{' '}
-                      <span className="text-white/70 text-[12px] font-normal font-sans ml-1">· Technical Advisory</span>
+                      <span className="text-white/70 text-[12px] font-normal font-sans ml-1">· Technical Desk</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="flex gap-3.5 py-4 border-t border-b border-white/15">
+                <div className="flex gap-3.5 py-4 border-t border-white/15">
                   <div className="w-[40px] h-[40px] rounded-[11px] bg-white/[0.12] border border-white/[0.2] grid place-items-center flex-none">
                     <EnvelopeSimple weight="duotone" className="w-5 h-5 text-[#8FB0FF]" />
                   </div>
                   <div>
-                    <div className="font-heading text-[11px] font-bold tracking-wider uppercase text-white/70 mb-1">
+                    <div className="font-heading text-[11px] font-bold tracking-wider uppercase text-[#8FB0FF] mb-1">
                       Official Email
                     </div>
                     <div className="text-[0.92rem] text-white leading-snug font-semibold">
@@ -195,22 +197,37 @@ export const ProcurementDesk: React.FC<ProcurementDeskProps> = ({ selectedProduc
                     </div>
                   </div>
                 </div>
+
+                {/* Sister Concerns summary */}
+                <div className="flex gap-3.5 py-4 border-t border-b border-white/15">
+                  <div className="w-[40px] h-[40px] rounded-[11px] bg-white/[0.12] border border-white/[0.2] grid place-items-center flex-none">
+                    <Buildings weight="duotone" className="w-5 h-5 text-[#8FB0FF]" />
+                  </div>
+                  <div>
+                    <div className="font-heading text-[11px] font-bold tracking-wider uppercase text-[#8FB0FF] mb-1">
+                      Group Concerns
+                    </div>
+                    <div className="text-[0.85rem] text-white/90 leading-tight">
+                      Anand Chemicals &amp; Rubber · Arien Impex · Chemin Enterprises
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Operating Hours */}
-              <p className="mt-7 text-[12px] text-white/75 leading-relaxed font-sans font-medium">
+              <p className="mt-6 text-[12px] text-white/75 leading-relaxed font-sans font-medium">
                 {COMPANY.contacts.hours}
               </p>
             </div>
           </div>
 
           {/* Right Column (Form) */}
-          <div className="bg-white rounded-lg p-7 sm:p-10 shadow-card border border-slate-200/85">
+          <div className="bg-white rounded-DEFAULT p-7 sm:p-10 shadow-card border border-slate-200/85">
             <h3 className="text-xl sm:text-2xl font-bold text-ink mb-1.5">
-              Send an enquiry
+              Send a Requisition Enquiry
             </h3>
             <p className="text-[0.9rem] text-slate-600 mb-7 font-normal">
-              Formal quotation issued within 2 hours.
+              Formal lot quotation and COA specification sheet issued within 2 hours.
             </p>
 
             {isSuccess ? (
