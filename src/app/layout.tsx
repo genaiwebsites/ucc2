@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     'ISNR-10 ISNR-20',
     'Furnace Carbon Black N220 N330',
     'Rubber Vulcanizing Chemicals CBS TBBS Zinc Oxide',
-    'Dankuni Warehousing',
+    'Kolkata Warehousing & Port Clearance',
     'Chemical Importers Eastern India',
   ],
   authors: [{ name: 'Usha Commercial Corporation' }],

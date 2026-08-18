@@ -1,37 +1,75 @@
 export interface BrandAssociate {
   name: string;
   logo: string;
-  category?: 'principal' | 'client';
+  category?: 'principal' | 'partner';
+  role?: string;
 }
 
-export const PRINCIPALS_AND_CLIENTS: {
-  principals: BrandAssociate[];
-  clients: BrandAssociate[];
-} = {
-  principals: [
-    { name: 'Reliance Industries', logo: '/logos/reliance.png', category: 'principal' },
-    { name: 'LANXESS', logo: '/logos/lanxess.svg', category: 'principal' },
-    { name: 'BASF', logo: '/logos/basf.svg', category: 'principal' },
-    { name: 'Dow Chemical', logo: '/logos/dow.svg', category: 'principal' },
-    { name: 'Evonik', logo: '/logos/evonik.svg', category: 'principal' },
-    { name: 'Wacker Chemie', logo: '/logos/wacker.svg', category: 'principal' },
-    { name: 'AkzoNobel', logo: '/logos/akzonobel.svg', category: 'principal' },
-    { name: 'Solvay', logo: '/logos/solvay.svg', category: 'principal' },
-    { name: 'Pidilite', logo: '/logos/pidilite.png', category: 'principal' },
-    { name: '3M Industrial', logo: '/logos/3m.svg', category: 'principal' },
-    { name: 'Tata Chemicals', logo: '/logos/tata-chemicals.png', category: 'principal' },
-    { name: 'Godrej Chemicals', logo: '/logos/godrej.svg', category: 'principal' },
-  ],
-  clients: [
-    { name: 'MRF Tyres', logo: '/logos/mrf.png', category: 'client' },
-    { name: 'Apollo Tyres', logo: '/logos/apollo-tyres.svg', category: 'client' },
-    { name: 'Bata India', logo: '/logos/bata.png', category: 'client' },
-    { name: 'Tata Motors', logo: '/logos/tata-motors.svg', category: 'client' },
-    { name: 'Mahindra & Mahindra', logo: '/logos/mahindra.svg', category: 'client' },
-    { name: 'Exide Industries', logo: '/logos/exide.svg', category: 'client' },
-    { name: 'CEAT Tyres', logo: '/logos/ceat.svg', category: 'client' },
-    { name: 'JK Tyre & Industries', logo: '/logos/jk-tyre.png', category: 'client' },
-    { name: 'Phoenix Conveyor Belts', logo: '/logos/phoenix.svg', category: 'client' },
-    { name: 'Dunlop Industrial', logo: '/logos/dunlop.svg', category: 'client' },
-  ],
-};
+export const PRINCIPALS_AND_PARTNERS: BrandAssociate[] = [
+  {
+    name: 'Reliance Industries',
+    logo: '/logos/reliance.png',
+    role: 'Synthetic Elastomers (SBR / PBR)',
+    category: 'principal',
+  },
+  {
+    name: 'DOW Chemical',
+    logo: '/logos/dow.svg',
+    role: 'EPDM Terpolymer & Specialty Polymers',
+    category: 'principal',
+  },
+  {
+    name: 'ARLANXEO',
+    logo: '/logos/arlanxeo.jpg',
+    role: 'Synthetic Rubber (LANXESS Synthetic Heritage)',
+    category: 'principal',
+  },
+  {
+    name: 'NOCIL Limited',
+    logo: '/logos/nocil.gif',
+    role: 'Vulcanizing Accelerators & Antioxidants',
+    category: 'principal',
+  },
+  {
+    name: 'Apcotex Industries',
+    logo: '/logos/apcotex.jpg',
+    role: 'Synthetic Rubber (NBR & High Styrene)',
+    category: 'principal',
+  },
+  {
+    name: 'Madhu Silica',
+    logo: '/logos/madhu-silica.png',
+    role: 'Precipitated Silica Fillers',
+    category: 'principal',
+  },
+  {
+    name: 'DuPont',
+    logo: '/logos/dupont.png',
+    role: 'Elastomeric Performance Additives',
+    category: 'principal',
+  },
+  {
+    name: 'Nouryon',
+    logo: '/logos/nouryon.png',
+    role: 'Specialty Organic Peroxides & Curatives',
+    category: 'principal',
+  },
+  {
+    name: 'Godrej Industries',
+    logo: '/logos/godrej.svg',
+    role: 'Stearic Acid & Rubber Grade Fatty Acids',
+    category: 'principal',
+  },
+  {
+    name: 'APAR Industries',
+    logo: '/logos/apar.png',
+    role: 'Rubber Process Oils & Specialty Lubricants',
+    category: 'principal',
+  },
+  {
+    name: 'TIMAB Magnesium',
+    logo: '/logos/timab.png',
+    role: 'Magnesium Oxide Activators',
+    category: 'principal',
+  },
+];

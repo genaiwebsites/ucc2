@@ -51,18 +51,18 @@ export const COMPANY = {
 
   stats: [
     { value: '55', suffix: '+', label: 'Years of Trust', sub: 'Established 1969 by Mr. L.N. Khatry', tag: 'Heritage' },
-    { value: '100', suffix: 'K+', label: 'Sq.Ft Storage', sub: 'Dankuni & Taratala logistics depots', tag: 'Storage' },
-    { value: '12', suffix: '+', label: 'Global Principals', sub: 'Authorized channel representation', tag: 'Network' },
+    { value: '11', suffix: '+', label: 'Global Partners', sub: 'Direct authorized representation', tag: 'Network' },
+    { value: '4', suffix: ' States', label: 'Regional Reach', sub: 'West Bengal, Jharkhand, Odisha, Bihar', tag: 'Coverage' },
     { value: '100', suffix: '%', label: 'ASTM Traceable', sub: 'Manufacturer COA on every lot', tag: 'Compliance' },
   ],
 
   bentoStats: [
     { value: '55', suffix: '+', label: 'Years of unbroken supply-chain trust since 1969', tag: 'Heritage', accent: true },
-    { value: '100', suffix: 'K+', label: 'Sq.ft covered warehousing across Eastern India', tag: 'Storage' },
-    { value: '12', suffix: '+', label: 'Global chemical principals represented', tag: 'Network' },
-    { value: '4', suffix: 'hr', label: 'Emergency dispatch window for contracted plants', tag: 'Response' },
-    { value: '60', suffix: 'd', label: 'Maximum client buffer stock allotment held', tag: 'Buffer' },
+    { value: '11', suffix: '+', label: 'Multinational petrochemical & chemical principals represented', tag: 'Network' },
+    { value: '4', suffix: ' States', label: 'Core industrial coverage across Eastern India', tag: 'Coverage' },
     { value: '100', suffix: '%', label: 'Consignments with authentic manufacturer COA', tag: 'Compliance' },
+    { value: 'FCL', suffix: ' & Ex-Stock', label: 'Flexible port indenting and warehouse buffer supply', tag: 'Flexibility' },
+    { value: '2', suffix: 'hr', label: 'Direct commercial desk RFQ turnaround commitment', tag: 'Speed' },
   ],
 
   corePillars: [
@@ -72,9 +72,9 @@ export const COMPANY = {
       desc: 'Continuous search for cost-effective polymer & chemical raw material formulations that maximize factory margin without sacrificing Mooney viscosity or tensile performance.',
     },
     {
-      title: 'On-Time Buffer Delivery',
+      title: 'Reliable Buffer Supply',
       kicker: 'Ex-Stock Security',
-      desc: '30 to 60-day buffer reserves held across Dankuni and Taratala depots, safeguarding production schedules against global port congestions and shipping surges.',
+      desc: 'Strategic regional buffer stockholding and port indenting safeguarding client manufacturing schedules against global shipping bottlenecks and container crunches.',
     },
     {
       title: 'Prompt Technical Support',
@@ -103,14 +103,14 @@ export const COMPANY = {
       number: 'SLA 03',
       title: 'Dedicated client buffer reserves',
       description:
-        'Contracted client buffer stock held in our Dankuni logistics park, insulating continuous 24/7 manufacturing schedules from global shipping bottlenecks and container crunches.',
+        'Contracted client buffer stock held in regional logistics depots, insulating continuous 24/7 manufacturing schedules from global shipping bottlenecks and container crunches.',
     },
     {
       id: 'sla-04',
       number: 'SLA 04',
-      title: 'Hot-run emergency dispatch',
+      title: 'Point-to-point factory delivery',
       description:
-        'Same-day emergency truckload dispatch for contracted plants across West Bengal, Howrah, and the Hooghly industrial belts within 4 hours of requisition.',
+        'Scheduled truckload dispatch for manufacturing plants across West Bengal, Howrah, Hooghly, and cross-state lines to Jamshedpur industrial belts.',
     },
   ],
 

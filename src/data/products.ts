@@ -46,7 +46,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Volatile Matter', value: '< 0.50% max' },
     ],
     applications: 'Tire Treads & Carcass, Footwear Soles, Conveyor Belting, Mechanical Moldings',
-    stockStatus: 'Ex-Stock (Kolkata/Dankuni) & Import Indents',
+    stockStatus: 'Ex-Stock (Kolkata Depots) & Import Indents',
     packaging: '35 kg film-wrapped bales on 1.05 MT shrink-wrapped pallets',
     technicalDetails: {
       standard: 'ASTM D1418 / ASTM D1646',
@@ -69,7 +69,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Ash Content', value: '< 0.8% max' },
     ],
     applications: 'Fuel & Hydraulic Hoses, O-Rings, Oil Seals, Gaskets, Printing Rollers',
-    stockStatus: 'Ex-Stock (Dankuni Storage Depot)',
+    stockStatus: 'Ex-Stock (Regional Warehouse Depots)',
     packaging: '25 kg / 35 kg bales, multi-ply kraft paper with PE inner liner',
     technicalDetails: {
       standard: 'ASTM D1418 / ISO 4658',
@@ -138,7 +138,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Plasticity (Po)', value: '≥ 30 min' },
     ],
     applications: 'Heavy Commercial Tires, Anti-Vibration Mounts, Industrial Belting',
-    stockStatus: 'Ex-Stock (Kolkata & Dankuni Depots)',
+    stockStatus: 'Ex-Stock (Kolkata Depots) & Indent',
     packaging: '50 kg / 111.11 kg pressed bales with talc coating',
     technicalDetails: {
       standard: 'Green Book International Standards / IS 4588',
@@ -184,7 +184,7 @@ export const PRODUCTS: Product[] = [
       { label: 'NSA Surface Area', value: '116 ± 5 m²/g' },
     ],
     applications: 'Ultra High-Performance Tire Treads, Heavy-Duty Conveyor Covers',
-    stockStatus: 'Ex-Stock (Dankuni) & Bulk Bags',
+    stockStatus: 'Ex-Stock (Regional Depots) & Bulk Bags',
     packaging: '25 kg multi-wall kraft bags / 1.0 MT jumbo FIBC sacks',
     technicalDetails: {
       standard: 'ASTM D1765 Classification',
@@ -230,7 +230,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Loss on Drying', value: '< 0.30% max' },
     ],
     applications: 'Tire Curing Lines, Industrial Extrusions, Footwear Vulcanization',
-    stockStatus: 'Ex-Stock (Kolkata/Dankuni)',
+    stockStatus: 'Ex-Stock (Kolkata Regional Depots)',
     packaging: '25 kg paper-plastic laminated bags with PE inner bag',
     technicalDetails: {
       standard: 'ISO 9001 Batch Protocol / REACH Compliant',
