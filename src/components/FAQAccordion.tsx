@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { FAQS } from '@/data/faqs';
 
 export const FAQAccordion: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleItem = (idx: number) => {
     setOpenIndex((prev) => (prev === idx ? null : idx));
