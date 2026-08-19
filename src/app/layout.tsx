@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Onest, Inter } from 'next/font/google';
 import './globals.css';
 import { COMPANY } from '@/data/company';
+import { SmoothScroll } from '@/components/SmoothScroll';
 
 const onest = Onest({
   subsets: ['latin'],
@@ -130,14 +131,15 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${onest.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${onest.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-page text-text font-sans antialiased min-h-screen">
+      <body className="bg-page text-text font-sans antialiased min-h-screen selection:bg-blue-600 selection:text-white">
+        <SmoothScroll />
         {children}
       </body>
     </html>
